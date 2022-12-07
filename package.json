@@ -1,6 +1,6 @@
 {
   "name": "@michvh-dev/scroll-behavior",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A utilitie to have different scroll behaviors on your website",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/michvh-dev/virtual-scroll.git"
+    "url": "git+https://github.com/michvh-dev/scroll-behavior.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/michvh-dev/virtual-scroll/issues"
+    "url": "https://github.com/michvh-dev/scroll-behavior/issues"
   },
-  "homepage": "https://github.com/michvh-dev/virtual-scroll#readme",
+  "homepage": "https://github.com/michvh-dev/scroll-behavior#readme",
   "devDependencies": {
     "rimraf": "^3.0.2",
     "typescript": "^4.9.3"
