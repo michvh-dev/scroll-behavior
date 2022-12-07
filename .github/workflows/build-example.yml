@@ -35,6 +35,7 @@ jobs:
             yarn-${{ hashFiles('${LIBRARY_NAME}/yarn.lock') }}
             yarn-
       - run: yarn install
+      - run: yarn build
       - run: yarn --cwd ./example install
       - run: yarn --cwd ./example build
       - name: Upload to example folder
