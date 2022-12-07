@@ -24,6 +24,8 @@ class Scroll {
     this.config = config;
     this.setTargets();
     this.calculateScollElements();
+    this.setCurrentScrollPosition(this.currentScroll);
+
     this.setEventListeners();
   }
 
