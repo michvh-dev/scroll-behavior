@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.section-1 {
+  background-color: #006ba6;
+}
+
+.section-2 {
+  background-color: #0496ff;
+}
+.section-3 {
+  background-color: #ffbc42;
+}
+.section-4 {
+  background-color: #d81159;
+}
+.section-5 {
+  background-color: #8f2d56;
+}
+
+
+/*# sourceMappingURL=main.css.map*/

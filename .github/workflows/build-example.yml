@@ -1,0 +1,41 @@
+name: Build virtual-scroll example
+
+on:
+  push:
+    branches:
+      - main
+env:
+  S3_BUCKET: michvh.dev
+  LIBRARY_NAME: scroll-behavior
+
+permissions:
+  id-token: write
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "16.x"
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@master
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-central-1
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: ~/.cache/${LIBRARY_NAME}/yarn/ #yarn cache dir
+          key: yarn-${{ hashFiles('${LIBRARY_NAME}/yarn.lock') }}
+          restore-keys: |
+            yarn-${{ hashFiles('${LIBRARY_NAME}/yarn.lock') }}
+            yarn-
+      - run: yarn --cwd ./example install
+      - run: yarn --cwd ./example build
+      - name: Upload to example folder
+        run: |
+          aws s3 sync ./example/dist s3://${S3_BUCKET}/${LIBRARY_NAME}/example
