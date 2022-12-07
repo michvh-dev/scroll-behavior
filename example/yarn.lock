@@ -953,11 +953,6 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@michvh-dev/virtual-scroll@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@michvh-dev/virtual-scroll/-/virtual-scroll-1.0.4.tgz#738836c63a0da947e40ab5e9043303044c75f053"
-  integrity sha512-iCt7TnLJI6JmyeSFGgAFCTRcTwa9/slGleQ8ok3TYYco98HrtXnLxV6MbY1csh9+69UifP3bUps6J2BXcMHkzQ==
-
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz#7619c2eb21b25483f6d167548b4cfd5a7488c3d5"
