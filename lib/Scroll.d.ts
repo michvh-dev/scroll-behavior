@@ -1,3 +1,4 @@
+import { VirtualScroll } from "@michvh-dev/virtual-scroll";
 interface ScrollElement {
     target: HTMLElement;
     id?: string;
@@ -16,15 +17,15 @@ declare class Scroll {
     scrollElements: ScrollElement[];
     currentScroll: number;
     maxScrollY: number;
+    virtualscroll: VirtualScroll;
     constructor(config: ScrollConfig);
     setTargets(): void;
     setScrollPosition(): void;
     setCurrentScrollPosition(position: number, save?: boolean): void;
     goToSectionId(id: string): void;
+    reset(): void;
     calculateScollElements(): void;
-    mouseScroll: (e: WheelEvent) => void;
-    handleKeyDownMove: (e: KeyboardEvent) => void;
-    scrollEventKey: string;
-    setEventListeners(): void;
+    initVirtualScroll(): void;
+    addEventListeners(): void;
 }
 export default Scroll;

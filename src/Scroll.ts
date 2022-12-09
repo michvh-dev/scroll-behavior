@@ -20,13 +20,14 @@ class Scroll {
   scrollElements: ScrollElement[] = [];
   currentScroll = 0;
   maxScrollY = 0;
+  virtualscroll: VirtualScroll;
   constructor(config: ScrollConfig) {
     this.config = config;
     this.setTargets();
     this.calculateScollElements();
-    this.setCurrentScrollPosition(this.currentScroll);
 
-    this.setEventListeners();
+    this.initVirtualScroll();
+    this.addEventListeners();
   }
 
   setTargets() {
@@ -40,13 +41,18 @@ class Scroll {
     }
   }
   setScrollPosition() {
-    this.scrollElements.forEach((el) => {
+    this.scrollElements.forEach((el, index) => {
       if (el.start <= this.currentScroll && !el.hasScroll) {
         el.target.style.transform = "translateY(0)";
       } else if (el.start <= this.currentScroll && el.hasScroll) {
-        el.target.style.transform = "translateY(0)";
-        el.target.style.overflow = "hidden";
-        el.target.scrollTop = this.currentScroll - el.start;
+        const translate = -(
+          (this.currentScroll > el.end ? el.end : this.currentScroll) - el.start
+        );
+        if (index === 1) {
+          debugger;
+        }
+        el.target.style.transform = `translateY(${translate}px)`;
+        console.log(translate);
       } else if (
         el.startScroll < this.currentScroll &&
         el.start > this.currentScroll
@@ -96,6 +102,17 @@ class Scroll {
       time = easeInQuad(i, 0, totalTime, 60);
     }
   }
+  reset() {
+    this.scrollElements.forEach((element) => {
+      element.target.style.transform = "";
+      element.target.style.position = "";
+      element.target.style.width = "";
+      element.target.style.left = "";
+      element.target.style.top = "";
+      element.target.style.zIndex = "";
+    });
+    this.scrollElements = [];
+  }
 
   calculateScollElements() {
     this.maxScrollY = 0;
@@ -116,6 +133,7 @@ class Scroll {
         hasScroll: element.scrollHeight !== window.innerHeight,
         end: scrollPositionEnd,
       };
+      console.log(object);
       object.target.style.position = "fixed";
       object.target.style.width = "100%";
       object.target.style.left = "0px";
@@ -123,33 +141,31 @@ class Scroll {
       object.target.style.zIndex = `${i + 1}`;
       this.scrollElements.push(object);
     }
+    this.setCurrentScrollPosition(this.currentScroll);
   }
 
-  mouseScroll = (e: WheelEvent) => {
-    e.preventDefault();
-
-    var scroll = this.currentScroll + e.deltaY;
-  };
-
-  handleKeyDownMove = (e: KeyboardEvent) => {
-    if (e.key == "down") {
-      this.setCurrentScrollPosition(this.currentScroll - 50);
-    } else if (e.key == "up") {
-      this.setCurrentScrollPosition(this.currentScroll + 50);
-    }
-  };
-  scrollEventKey =
-    "onwheel" in document.createElement("div") ? "wheel" : "mousewheel";
-
-  setEventListeners() {
-    const scroll = new VirtualScroll({
+  initVirtualScroll() {
+    this.virtualscroll = new VirtualScroll({
       horizontal: false,
       vertical: true,
-      keyBoardOffset: 25,
+      keyboardOffset: 50,
+      boundaries: {
+        minX: 0,
+        minY: 0,
+        maxX: window.innerHeight,
+        maxY: this.maxScrollY,
+      },
     });
-    debugger;
-    scroll.on("scroll", (p) => {
+
+    this.virtualscroll.on("scroll", (p) => {
       this.setCurrentScrollPosition(p.currentY);
+    });
+  }
+
+  addEventListeners() {
+    window.addEventListener("resize", () => {
+      this.reset();
+      this.calculateScollElements();
     });
   }
 }
