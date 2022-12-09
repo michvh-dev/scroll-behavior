@@ -48,9 +48,7 @@ class Scroll {
         const translate = -(
           (this.currentScroll > el.end ? el.end : this.currentScroll) - el.start
         );
-        if (index === 1) {
-          debugger;
-        }
+
         el.target.style.transform = `translateY(${translate}px)`;
         console.log(translate);
       } else if (

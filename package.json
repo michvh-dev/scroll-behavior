@@ -30,6 +30,6 @@
     "access": "public"
   },
   "dependencies": {
-    "@michvh-dev/virtual-scroll": "^1.0.4"
+    "@michvh-dev/virtual-scroll": "^1.0.6"
   }
 }

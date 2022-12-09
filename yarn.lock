@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@michvh-dev/virtual-scroll@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@michvh-dev/virtual-scroll/-/virtual-scroll-1.0.4.tgz#738836c63a0da947e40ab5e9043303044c75f053"
-  integrity sha512-iCt7TnLJI6JmyeSFGgAFCTRcTwa9/slGleQ8ok3TYYco98HrtXnLxV6MbY1csh9+69UifP3bUps6J2BXcMHkzQ==
+"@michvh-dev/virtual-scroll@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@michvh-dev/virtual-scroll/-/virtual-scroll-1.0.6.tgz#4821eafeab8742779d3381ac080f41b45a52430e"
+  integrity sha512-xHZIHfJyC0bC0dlCqmSsEHrKqqNH7L+DsIrc+boIG/NbEWN5BTlQKmpYiJf1gsxm6MSTRKOjcAc1wP+NxMYv6A==
 
 balanced-match@^1.0.0:
   version "1.0.2"
