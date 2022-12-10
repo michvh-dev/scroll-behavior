@@ -1,3 +1,5 @@
-import Scroll from "./Scroll";
+import ScrollBehavior from "./ScrollBehavior";
 
-export { Scroll };
+export { ScrollBehavior };
+
+export default ScrollBehavior;

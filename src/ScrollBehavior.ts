@@ -15,14 +15,19 @@ interface ScrollConfig {
 }
 
 class Scroll {
-  config: ScrollConfig;
+  elements?: Element[];
+  elementSelector?: string;
   targetElements: Element[] = [];
   scrollElements: ScrollElement[] = [];
   currentScroll = 0;
   maxScrollY = 0;
   virtualscroll: VirtualScroll;
-  constructor(config: ScrollConfig) {
-    this.config = config;
+  constructor({ elements, elementSelector }: ScrollConfig) {
+    if (!elements && !elementSelector) {
+      throw new Error("one of these: elements, elementSelector is required");
+    }
+    this.elements = elements;
+    this.elementSelector = elementSelector;
     this.setTargets();
     this.calculateScollElements();
 
@@ -31,7 +36,7 @@ class Scroll {
   }
 
   setTargets() {
-    const { elements, elementSelector } = this.config;
+    const { elements, elementSelector } = this;
     if (elements) {
       this.targetElements = elements;
     } else if (elementSelector) {

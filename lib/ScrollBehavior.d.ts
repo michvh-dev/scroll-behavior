@@ -12,13 +12,14 @@ interface ScrollConfig {
     elementSelector?: string;
 }
 declare class Scroll {
-    config: ScrollConfig;
+    elements?: Element[];
+    elementSelector?: string;
     targetElements: Element[];
     scrollElements: ScrollElement[];
     currentScroll: number;
     maxScrollY: number;
     virtualscroll: VirtualScroll;
-    constructor(config: ScrollConfig);
+    constructor({ elements, elementSelector }: ScrollConfig);
     setTargets(): void;
     setScrollPosition(): void;
     setCurrentScrollPosition(position: number, save?: boolean): void;

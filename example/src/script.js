@@ -1,6 +1,5 @@
 import "./style.css";
 
-import { Scroll } from "../../lib";
+import { ScrollBehavior } from "../../lib";
 
-const scroll = new Scroll({ elementSelector: ".section" });
-console.log(Scroll);
+new ScrollBehavior({ elementSelector: ".section" });
