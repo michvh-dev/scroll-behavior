@@ -7,7 +7,7 @@ interface ScrollElement {
     end: number;
     hasScroll: boolean;
 }
-interface ScrollConfig {
+interface ScrollBehaviorConfig {
     elements?: Element[];
     elementSelector?: string;
 }
@@ -19,7 +19,7 @@ declare class Scroll {
     currentScroll: number;
     maxScrollY: number;
     virtualscroll: VirtualScroll;
-    constructor({ elements, elementSelector }: ScrollConfig);
+    constructor({ elements, elementSelector }: ScrollBehaviorConfig);
     setTargets(): void;
     setScrollPosition(): void;
     setCurrentScrollPosition(position: number, save?: boolean): void;

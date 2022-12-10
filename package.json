@@ -1,6 +1,6 @@
 {
   "name": "@michvh-dev/scroll-behavior",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A utilitie to have different scroll behaviors on your website",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
