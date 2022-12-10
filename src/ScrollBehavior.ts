@@ -9,7 +9,7 @@ interface ScrollElement {
   end: number;
   hasScroll: boolean;
 }
-interface ScrollConfig {
+interface ScrollBehaviorConfig {
   elements?: Element[];
   elementSelector?: string;
 }
@@ -22,7 +22,7 @@ class Scroll {
   currentScroll = 0;
   maxScrollY = 0;
   virtualscroll: VirtualScroll;
-  constructor({ elements, elementSelector }: ScrollConfig) {
+  constructor({ elements, elementSelector }: ScrollBehaviorConfig) {
     if (!elements && !elementSelector) {
       throw new Error("one of these: elements, elementSelector is required");
     }
@@ -42,7 +42,7 @@ class Scroll {
     } else if (elementSelector) {
       this.targetElements = [...document.querySelectorAll(elementSelector)];
     } else {
-      throw Error("dsfdsfs");
+      throw new Error("one of these: elements, elementSelector is required");
     }
   }
   setScrollPosition() {
@@ -55,7 +55,6 @@ class Scroll {
         );
 
         el.target.style.transform = `translateY(${translate}px)`;
-        console.log(translate);
       } else if (
         el.startScroll < this.currentScroll &&
         el.start > this.currentScroll
@@ -136,7 +135,6 @@ class Scroll {
         hasScroll: element.scrollHeight !== window.innerHeight,
         end: scrollPositionEnd,
       };
-      console.log(object);
       object.target.style.position = "fixed";
       object.target.style.width = "100%";
       object.target.style.left = "0px";
